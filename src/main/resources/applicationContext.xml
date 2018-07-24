@@ -41,7 +41,13 @@
         <!-- 这里的配置后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->  
         <property name="prefix" value="/" />  
         <property name="suffix" value=".jsp" />  
-    </bean>  
+    </bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置默认编码 -->
+		<property name="defaultEncoding" value="utf-8"></property>
+		<!-- 上传图片最大大小1M-->
+		<property name="maxUploadSize" value="1048576"></property>
+	</bean>
 
 	<!-- 读取oracle.properties -->
 	<util:properties id="db" location="classpath:jdbc/jdbc.properties">
@@ -51,6 +57,7 @@
     
     <mvc:resources mapping="/js/**" location="/js/" />
     <mvc:resources mapping="/layui/**" location="/layui/"/>
+	<mvc:resources mapping="/image/**" location="/image/"/>
 
 
 
